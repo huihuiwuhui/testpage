@@ -1,8 +1,18 @@
-## Welcome to GitHub Pages
+# Es常用地址
 
-You can use the [editor on GitHub](https://github.com/huihuiwuhui/testpage/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+```sh
+#删除resident索引下的数据
+curl -X POST "localhost:9200/resident/_delete_by_query" -H 'Content-Type: application/json' -d'{"query": {"match_all": {}}}'
+#新建索引
+curl -X PUT  "localhost:9200/test" -H 'Content-Type: application/json' -d'{"settings": {"number_of_shards": 1,"number_of_replicas":1 }}'
+#删除索引数据之后还占用空间，可以执行这个
+curl -X POST "localhost:9200/resident/_forcemerge?only_expunge_deletes=true"
+#查看节点信息
+curl "localhost:9200/_cat/nodes"
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+```
+
+
 
 ### Markdown
 
