@@ -1,14 +1,6 @@
-# Es常用地址
+  [Es](_posts/2022-06-12-ES.md)
 
 ```sh
-#删除resident索引下的数据
-curl -X POST "localhost:9200/resident/_delete_by_query" -H 'Content-Type: application/json' -d'{"query": {"match_all": {}}}'
-#新建索引
-curl -X PUT  "localhost:9200/test" -H 'Content-Type: application/json' -d'{"settings": {"number_of_shards": 1,"number_of_replicas":1 }}'
-#删除索引数据之后还占用空间，可以执行这个
-curl -X POST "localhost:9200/resident/_forcemerge?only_expunge_deletes=true"
-#查看节点信息
-curl "localhost:9200/_cat/nodes"
 
 ```
 
